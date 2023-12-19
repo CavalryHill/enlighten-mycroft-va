@@ -79,3 +79,5 @@ There are finely built Mycroft-Skills in Marketplace for Spofity and Pandora alr
 
 ### NextCloud Server
 With much storage un-used, I hit upon this idea to use it as NextCloud Server to store 'secret files' and also work as where Mycroft downloads the audio to. 
+
+Folllow up the guide [here](https://raspberrytips.com/install-nextcloud-raspberry-pi/) (2nd method) to host nextCloud without flashing the image. 
