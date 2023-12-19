@@ -1,12 +1,19 @@
 # enlighten-voice-assistant
 
 ## Picroft 燒錄
-```
-請確保所使用的 Wi-fi 為 2.4G
-```
+First, go get [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2023-09-07`.
+
+then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosure-picroft) to install
+
+> [!CAUTION]
+> Please making sure you're using Wi-Fi 2.4G for Picroft to create connection. I was using 5.0G and finally found out the problem during Mycroft-Setup-Wizard, so I'm not sure if setting up Wi-Fi insde Imager would work or not. But if you succeed to connect the device with SSH, congrats you save cost for a useless, expensive HDMI converter.  
 
 ## Picroft 架設
-首次開機會啟動 mycroft-wizard，請確保麥克風與音響在此階段完成設置，因為預設的指令已失效
+> [!CAUTION]
+> I recommend setting up everything during the Mycroft-Setup-Wizard to avoid manual file edits. The `mycroft-setup-wizard` command has been broken for a long time actually.
+
+> [!TIP]
+> Embrace the guided setup for clearer instructions, or why would you turn down such hospitality?
 
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/1048bb9a-33a4-463e-b048-9ae43067513d)
 
@@ -17,11 +24,15 @@ For debugging purpose, we oftenly need to check the logs for exceptions, and you
 > [!NOTE]  
 > You may pay a visit to [Official Document](https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/troubleshooting/log-files) to get better known with these files  
 
-
 ### 套件升級
-可能是官方當初設計時沒有設定 pip 下載指定套件版本，導致更新的套件無法在舊的 pip 環境執行  
+Guessing the official forgot to defined version of python package, much of them are not working with outdated `pip` and `package`, please do as following. 
 `mycroft-pip install --upgrade pip`
 
+### Paring Device
+1. Register or Login your account at [Mycroft AI](https://home.mycroft.ai/). 
+2. On the left side-menu >> My Mycroft >> Devices. 
+3. Setup the default config for all device on the first time.
+4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in CLI >> History. 
 
 ### Changing Text-to-Speech Engine
 If you can hear the audio output while mic testing, but no sound while running response in CLI, likewise, it's probally the default package of `mycroft-mimic3-tts` is also outdated and causing no sound output. I've met the error but enable to fix the python package conflict. So, I simply change the TTS module to Google. 
@@ -50,4 +61,10 @@ then change it like so (example for English(UK))
 ```
 
 > [!NOTE]
-> You may visit [Officual Document](https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/customizations/tts-engine) for more choices on TTS Engine, or you may vist [gTTS](https://gtts.readthedocs.io/en/latest/module.html#languages-gtts-lang) to see the supported language and accent. 
+> You may visit [Officual Document](https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/customizations/tts-engine) for more choices on TTS Engine, or you may vist [gTTS](https://gtts.readthedocs.io/en/latest/module.html#languages-gtts-lang) to see the supported language and accent.
+
+## Client Bus
+Although simply using the Mycroft provide much function, we want to catch or set the I/O to make more expansion. 
+
+### Basic Usage
+After the fixes above, you should be able to use the CLI and getting audio output now. You can simply input some text in CLI, or try-out the wake word, after hearing a alert sound, it start recording. 
