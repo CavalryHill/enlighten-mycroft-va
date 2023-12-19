@@ -32,7 +32,10 @@ Guessing the official forgot to defined version of python package, much of them 
 1. Register or Login your account at [Mycroft AI](https://home.mycroft.ai/). 
 2. On the left side-menu >> My Mycroft >> Devices. 
 3. Setup the default config for all device on the first time.
-4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in CLI >> History. 
+4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in CLI >> History.
+
+You should see something alike as below, and please make sure the `mycroft-version` is displayed to confirm the connection. 
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/a0b9e2ce-69af-42db-aeff-4432821f1e6e)
 
 ### Changing Text-to-Speech Engine
 If you can hear the audio output while mic testing, but no sound while running response in CLI, likewise, it's probally the default package of `mycroft-mimic3-tts` is also outdated and causing no sound output. I've met the error but enable to fix the python package conflict. So, I simply change the TTS module to Google. 
@@ -68,3 +71,11 @@ Although simply using the Mycroft provide much function, we want to catch or set
 
 ### Basic Usage
 After the fixes above, you should be able to use the CLI and getting audio output now. You can simply input some text in CLI, or try-out the wake word, after hearing a alert sound, it start recording. 
+
+### Custom Skill for Music
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/ccaf3d6d-f183-4e55-9f0a-64dcaf916dc4)
+
+There are finely built Mycroft-Skills in Marketplace for Spofity and Pandora already, but as a Hi-Res Audio Purchaser, I don't wish to waste more money on stream service subscription cost, so I just tried hard to fetch music on YouTube by searching for URL, and you may check [python-file] to see how I archieve this. 
+
+### NextCloud Server
+With much storage un-used, I hit upon this idea to use it as NextCloud Server to store 'secret files' and also work as where Mycroft downloads the audio to. 
