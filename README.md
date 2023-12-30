@@ -77,7 +77,30 @@ After the fixes above, you should be able to use the CLI and getting audio outpu
 
 There are finely built Mycroft-Skills in Marketplace for Spofity and Pandora already, but as a Hi-Res Audio Purchaser, I don't wish to waste more money on stream service subscription cost, so I just tried hard to fetch music on YouTube by searching for URL, and you may check [python-file] to see how I archieve this. 
 
-### NextCloud Server
+## NextCloud Server
 With much storage un-used, I hit upon this idea to use it as NextCloud Server to store 'secret files' and also work as where Mycroft downloads the audio to. 
 
 Folllow up the guide [here](https://raspberrytips.com/install-nextcloud-raspberry-pi/) (2nd method) to host nextCloud without flashing the image. 
+
+### Updating Linux Settings
+![Screenshot 2023-12-30 143613](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/0201e185-08a3-4c01-a9bb-c344e0d9876e)
+The default settings of Mycroft Stable Image actually stopped you from any changes to Operating System (OS), so you need to use the following command to rewrite the settings and also update OS.  
+`sudo apt-get --allow-releaseinfo-change update`  
+
+### Installing Required Package
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/45849a83-7250-46c3-b700-5296c3e502bb)  
+Here's the [doc](https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html) of system requirements. I decided to use php8.2.  
+To host a web server, I am using my most accustomed launcher -- Apache2, which the config file is also similar to Nginx. Now we followed the instructions to install our needs.  
+`sudo apt install apache2 mariadb-server libapache2-mod-php`  
+`sudo apt install php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip`  
+
+### Installing Nextcloud Web-Pack
+Thanks to manys' efforts, there's also public released Nextcloud web-pack, please followed the instructions below. 
+1. Use `cd /var/www` to get under the default Apache web-pack storage.
+2. Use `sudo wget https://download.nextcloud.com/server/releases/latest.zip` to start downloading the `ZIP` file.
+3. Use `sudo unzip latest.zip` to un-zip the web-package, which should be named `nextcloud`. 
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/89d32b70-aac7-4465-8b32-47334a721f66)
+
+### Implemeting Nextcloud Web-Pack
+To have the easiest way, we can simply change the folder name `nextcloud` to `html`, the target of default Apache config. Although I always recommend to create a new config file, let's have-an-eye on it for the basic to everyone. After re-naming, use `sudo service apache2 restart` to restart the service and the new website should be host on ${DEVICE_IP}:80. 
+
