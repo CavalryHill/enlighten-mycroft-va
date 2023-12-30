@@ -90,7 +90,14 @@ The default settings of Mycroft Stable Image actually stopped you from any chang
 ### Installing Required Package
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/45849a83-7250-46c3-b700-5296c3e502bb)  
 Here's the [doc](https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html) of system requirements. I decided to use php8.2.  
-To host a web server, I am using my most accustomed launcher -- Apache2, which the config file is also similar to Nginx. Now we followed the instructions to install our needs.  
+
+Yet on Raspberry Pi, the known PHP version is 7.4, so we need to make following changes to install higher versions:  
+1. Use `sudo apt install apt-transport-https lsb-release ca-certificates software-properties-common` to install associated packages.  
+2. Run `sudo apt update` to update the newly added packages for next step.  
+3. Use `sudo add-apt-repository ppa:ondrej/php` to make apt known the whereabout of PHP sources.  
+4. Use `sudo apt install php8.2 php8.2-cli` to install PHP 8.2, the extensions should be installed along side.  
+
+Then to host a web server, I am using my most accustomed launcher -- Apache2, which the config file is also similar to Nginx. Now we followed the instructions to install our needs.  
 `sudo apt install apache2 mariadb-server libapache2-mod-php`  
 `sudo apt install php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip`  
 
