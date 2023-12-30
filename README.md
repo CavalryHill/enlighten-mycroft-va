@@ -104,7 +104,6 @@ sudo apt update```
 4. Run `sudo apt install php8.2-mysql` to ensure database drivers. 
 
 > [!TIP] You can check the version of PHP by running `php -v`.
-
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
 
 After the installation of PHP, we need to connect it with our web server. 
@@ -139,7 +138,8 @@ To have the easiest way, we can simply change the folder name `nextcloud` to `ht
 4. Follow the steps then install nextcloud.
 5. Get youself a nice drink and dessert and watch a movie, just don't close the long-awaiting installation.
 6. After installation for file storage is done, it will ask you if other functions is needed, let's just skip them.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/4c64c971-86bb-4ffa-8910-02481425b809)
-7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now. 
+7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/df6b0aef-3087-4072-8a40-56c226c24007)
+
 
 
 
