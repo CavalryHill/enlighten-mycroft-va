@@ -1,5 +1,9 @@
 # enlighten-voice-assistant
 
+## System Using at The Moment
+ + Raspberry Pi 4
+
+
 ## Picroft 燒錄
 First, go get [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2023-09-07`.
 
@@ -99,8 +103,9 @@ sudo apt update```
 3. Run `sudo apt install php8.2-zip php8.2-xml php8.2-mbstring php8.2-gd php8.2-curl` to install all required extensions.
 4. Run `sudo apt install php8.2-mysql` to ensure database drivers. 
 
-> [!TIP] You can check the version of PHP by running `php -v`.  
-> ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
+> [!TIP] You can check the version of PHP by running `php -v`.
+
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
 
 After the installation of PHP, we need to connect it with our web server. 
 
@@ -130,7 +135,11 @@ To have the easiest way, we can simply change the folder name `nextcloud` to `ht
 
 1. After re-naming, use `sudo service apache2 restart` to restart the service and  
 2. Use `sudo chown www-data:www-data html -R` in directory `/var/www` to give the Apache permission to read the folder, or there will be a blank webpage.  
-3. the new website should be host on ${DEVICE_IP}:80.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d13c259b-9474-4ba0-aca1-b9eb98dfe72f)
-4. Follow the steps then install nextcloud. 
+3. the new website should be host on <DEVICE_IP>:80.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d13c259b-9474-4ba0-aca1-b9eb98dfe72f)
+4. Follow the steps then install nextcloud.
+5. Get youself a nice drink and dessert and watch a movie, just don't close the long-awaiting installation.
+6. After installation for file storage is done, it will ask you if other functions is needed, let's just skip them.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/4c64c971-86bb-4ffa-8910-02481425b809)
+7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now. 
+
 
 
