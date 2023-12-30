@@ -95,10 +95,12 @@ Yet on Raspberry Pi, the latest PHP version recognized by apt is merely version 
 1. Run the following commands to create source of PHP  ```sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ buster main" | sudo tee /etc/apt/sources.list.d/php.list
 sudo apt update```
-2. Run `sudo apt install php8.2` to install PHP 8.2, and most extensions shall be downloaded along side as well.
+2. Run `sudo apt install php8.2` to install core functions of PHP 8.2.
+3. Run `sudo apt install php8.2-zip php8.2-xml php8.2-mbstring php8.2-gd php8.2-curl` to install all required extensions.
+4. Run `sudo apt install php8.2-mysql` to ensure database drivers. 
 
-Now you can check the version of PHP by running `php -v`.  
-![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
+> [!TIP] You can check the version of PHP by running `php -v`.  
+> ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
 
 After the installation of PHP, we need to connect it with our web server. 
 
@@ -109,6 +111,13 @@ Then to host a web server, I am using my most accustomed launcher -- Apache2, wh
 2. If you have any older version, run `sudo a2dismod php<old-version>` to disable it first. 
 3. Run `sudo a2enmod php8.2` to enable the module, then restart your Apache server. 
 
+### Setting-Up Database
+Ere we jump into nextcloud console, we need to configure a database for it's data beforehand. 
+1. Run `sudo mysql` to get into MySQL with root without password.
+2. Run `CREATE USER 'nextcloud' IDENTIFIED BY '<PASSWORD>';` to create a new MySQL user.
+3. Run `CREATE DATABASE nextcloud;` to create a new database, then run `GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@localhost IDENTIFIED BY '<PASSWORD>';` to give user the permission of the newly created database.
+4. Run `FLUSH PRIVILEGES;` to reload settings, then run `quit;` to leave MySQL console. 
+
 ### Installing Nextcloud Web-Pack
 Thanks to manys' efforts, there's also public released Nextcloud web-pack, please followed the instructions below. 
 1. Use `cd /var/www` to get under the default Apache web-pack storage.
@@ -117,5 +126,11 @@ Thanks to manys' efforts, there's also public released Nextcloud web-pack, pleas
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/89d32b70-aac7-4465-8b32-47334a721f66)
 
 ### Implemeting Nextcloud Web-Pack
-To have the easiest way, we can simply change the folder name `nextcloud` to `html`, the target of default Apache config. Although I always recommend to create a new config file, let's have-an-eye on it for the basic to everyone. After re-naming, use `sudo service apache2 restart` to restart the service and the new website should be host on ${DEVICE_IP}:80. 
+To have the easiest way, we can simply change the folder name `nextcloud` to `html`, the target of default Apache config. Although I always recommend to create a new config file, let's have-an-eye on it for the basic to everyone. 
+
+1. After re-naming, use `sudo service apache2 restart` to restart the service and  
+2. Use `sudo chown www-data:www-data html -R` in directory `/var/www` to give the Apache permission to read the folder, or there will be a blank webpage.  
+3. the new website should be host on ${DEVICE_IP}:80.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d13c259b-9474-4ba0-aca1-b9eb98dfe72f)
+4. Follow the steps then install nextcloud. 
+
 
