@@ -91,15 +91,23 @@ The default settings of Mycroft Stable Image actually stopped you from any chang
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/45849a83-7250-46c3-b700-5296c3e502bb)  
 Here's the [doc](https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html) of system requirements. I decided to use php8.2.  
 
-Yet on Raspberry Pi, the known PHP version is 7.4, so we need to make following changes to install higher versions:  
-1. Use `sudo apt install apt-transport-https lsb-release ca-certificates software-properties-common` to install associated packages.  
-2. Run `sudo apt update` to update the newly added packages for next step.  
-3. Use `sudo add-apt-repository ppa:ondrej/php` to make apt known the whereabout of PHP sources.  
-4. Use `sudo apt install php8.2 php8.2-cli` to install PHP 8.2, the extensions should be installed along side.  
+Yet on Raspberry Pi, the latest PHP version recognized by apt is merely version 7.3, so we need to make following changes to install higher versions: 
+1. Run the following commands to create source of PHP  ```sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ buster main" | sudo tee /etc/apt/sources.list.d/php.list
+sudo apt update```
+2. Run `sudo apt install php8.2` to install PHP 8.2, and most extensions shall be downloaded along side as well.
 
-Then to host a web server, I am using my most accustomed launcher -- Apache2, which the config file is also similar to Nginx. Now we followed the instructions to install our needs.  
+Now you can check the version of PHP by running `php -v`.  
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/76b7e7bd-10fb-4ac7-8f7a-e266c1393a9d)  
+
+After the installation of PHP, we need to connect it with our web server. 
+
+Then to host a web server, I am using my most accustomed launcher -- Apache2, which the config file is also similar to Nginx. Now we followed the instructions to install our needs.  Let's install MariaDB along side, which is version 10.3.  
 `sudo apt install apache2 mariadb-server libapache2-mod-php`  
-`sudo apt install php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip`  
+
+1. x
+2. If you have any older version, run `sudo a2dismod php<old-version>` to disable it first. 
+3. Run `sudo a2enmod php8.2` to enable the module, then restart your Apache server. 
 
 ### Installing Nextcloud Web-Pack
 Thanks to manys' efforts, there's also public released Nextcloud web-pack, please followed the instructions below. 
