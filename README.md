@@ -3,6 +3,7 @@
 ## System Using at The Moment
  + Raspberry Pi 4
  + 32 GB SD-Card
+ + Python 3.7.3
  + Picroft (Stable Image) on Sep. 07, 2020
 
 
@@ -192,7 +193,7 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 
 ### LED Display
 > [!IMPORTANT]
-> My both tri-colour LED just got dead, so I change to use [other's work](https://github.com/arother/picroft-led) in Reference.  
+> My both tri-colour LED just got dead, so I modify sir Andreas Rother's code since gpiozero often crush on older python version.  
 
 > [!NOTE]
 > The source code is named `singal_led_2.py` inside folder `python-ext`, but if you're interested in using tri-colour LED, you may take a visit to my undone work of `sigal_led.py`.  
