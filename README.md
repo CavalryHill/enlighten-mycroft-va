@@ -2,6 +2,7 @@
 
 ## System Using at The Moment
  + Raspberry Pi 4
+ + 32 GB SD-Card
 
 
 ## Flash Picroft Image to Raspberry Pi
