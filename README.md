@@ -5,7 +5,7 @@
  + 32 GB SD-Card
 
 
-## Flash Picroft Image to Raspberry Pi
+## { Flash Picroft Image }
 First, go get yourself [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2020-09-07`.
 
 then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosure-picroft) to flash it into Raspberry Pi. 
@@ -13,7 +13,7 @@ then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosur
 > [!CAUTION]
 > Please making sure you're using Wi-Fi 2.4G for Picroft to create connection. I was using 5.0G and finally found out the problem during Mycroft-Setup-Wizard, so I'm not sure if setting up Wi-Fi insde Imager would work or not. But if you succeed to connect the device with SSH, congrats you save cost for a useless, expensive HDMI converter.  
 
-## Setup Picroft
+## { Setup Picroft }
 > [!CAUTION]
 > I recommend setting up everything during the Mycroft-Setup-Wizard to avoid manual file edits. The `mycroft-setup-wizard` command has been broken for a long time actually.
 
@@ -71,7 +71,16 @@ then change it like so (example for English(UK))
 > [!NOTE]
 > You may visit [Officual Document](https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/customizations/tts-engine) for more choices on TTS Engine, or you may vist [gTTS](https://gtts.readthedocs.io/en/latest/module.html#languages-gtts-lang) to see the supported language and accent.
 
-## Client Bus
+### SSL Cerificate Expired
+![Screenshot 2024-01-07 143432](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/ad48cba8-9e1a-491e-9e7d-a3be9b235935)
+
+I just found SSL got `Verfied Failed` after like a month. So here's the instruction how I get a new SSL certificate.  
+1. Run `mycroft-pip install --upgrade certifi` to get the latest version of package for SSL certificate.  
+2. Run `sudo apt-get install ca-certificates` to get a new certificate.
+
+There you go, so simple and not even to walkthrough registration procedure like Let's Encrypt. 
+
+## { Client Bus }
 Although simply using the Mycroft provide much function, we want to catch or set the I/O to make more expansion. 
 
 ### Basic Usage
@@ -82,7 +91,7 @@ After the fixes above, you should be able to use the CLI and getting audio outpu
 
 There are finely built Mycroft-Skills in Marketplace for Spofity and Pandora already, but as a Hi-Res Audio Purchaser, I don't wish to waste more money on stream service subscription cost, so I just tried hard to fetch music on YouTube by searching for URL, and you may check [python-file] to see how I archieve this. 
 
-## Nextcloud Server
+## { Nextcloud Server }
 With much storage un-used, I hit upon this idea to use it as NextCloud Server to store 'secret files' and also work as where Mycroft downloads the audio to. 
 
 Folllow up the guide [here](https://raspberrytips.com/install-nextcloud-raspberry-pi/) (2nd method) to host nextCloud without flashing the image. 
@@ -148,7 +157,7 @@ But you may experience the below situation when connected from outside even with
 You need to edit config file at `/var/www/html/config/config.php`, edit the array for `trust_domains`  
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/e47a9165-778f-4100-9b12-7a58cd65b9db)
 
-## Web Buildup
+## { Web Buildup }
 > [!NOTE]  
 > The source code is full pack named `apiweb` inside folder `python-ext`
 
@@ -159,7 +168,7 @@ To easily control and enable text input from outside Mycroft CLI, I use ChatGPT 
 1. Run `python app.py` to host it on port 5000 defined in file.
 2. You could add it to Mycroft's `auto_run.sh`, or take [this doc](https://tecadmin.net/deploying-flask-application-on-ubuntu-apache-wsgi/) to learn how to host it on startup with Apache. 
 
-## Device Buildup
+## { Device Buildup} 
 > [!NOTE]  
 > All involved in Mycroft Skill must have Mycroft CLI running first  
 
@@ -178,7 +187,7 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 ![20240107_131353](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/44cbafcf-9ef4-4f4f-b04a-1d9ec4e5f071)
 
 
-## Reference
+# Reference
 > Mycroft  
 >  - [Mycroft Offical Doc](https://mycroft-ai.gitbook.io/docs/)
 
@@ -205,7 +214,7 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 > TM1637  
 >  - [TM1637 Tutorial](https://github.com/depklyon/raspberrypi-tm1637)
 
-## If Interested  
+# If Interested  
 > Spotify  
 >  - [Python Library - Spotipy](https://spotipy.readthedocs.io/en/2.22.1/)  
 >  - [Spotify Developer API](https://developer.spotify.com/)  
