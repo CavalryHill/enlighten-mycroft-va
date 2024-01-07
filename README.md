@@ -144,7 +144,7 @@ Thanks to manys' efforts, there's also public released Nextcloud web-pack, pleas
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/89d32b70-aac7-4465-8b32-47334a721f66)
 
 ### Implemeting Nextcloud Web-Pack
-To have the easiest way, we can simply change the folder name `nextcloud` to `html`, the target of default Apache config. Although I always recommend to create a new config file, let's have-an-eye on it for the basic to everyone. 
+To have the easiest way, we can simply change the folder name `nextcloud` to `html`, the target of default Apache config. Although I always recommend to create a new config file, let's close-an-eye on it for the basic to everyone. 
 
 1. After re-naming, use `sudo service apache2 restart` to restart the service and  
 2. Use `sudo chown www-data:www-data html -R` in directory `/var/www` to give the Apache permission to read the folder, or there will be a blank webpage.  
