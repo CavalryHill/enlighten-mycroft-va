@@ -4,7 +4,7 @@
  + Raspberry Pi 4
 
 
-## Picroft 燒錄
+## Flash Picroft Image to Raspberry Pi
 First, go get yourself [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2020-09-07`.
 
 then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosure-picroft) to flash it into Raspberry Pi. 
@@ -12,7 +12,7 @@ then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosur
 > [!CAUTION]
 > Please making sure you're using Wi-Fi 2.4G for Picroft to create connection. I was using 5.0G and finally found out the problem during Mycroft-Setup-Wizard, so I'm not sure if setting up Wi-Fi insde Imager would work or not. But if you succeed to connect the device with SSH, congrats you save cost for a useless, expensive HDMI converter.  
 
-## Picroft 架設
+## Setup Picroft
 > [!CAUTION]
 > I recommend setting up everything during the Mycroft-Setup-Wizard to avoid manual file edits. The `mycroft-setup-wizard` command has been broken for a long time actually.
 
@@ -28,7 +28,7 @@ For debugging purpose, we oftenly need to check the logs for exceptions, and you
 > [!NOTE]  
 > You may pay a visit to [Official Document](https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/troubleshooting/log-files) to get better known with these files  
 
-### 套件升級
+### Updateing Packages
 Guessing the official forgot to defined version of python package, much of them are not working with outdated `pip` and `package`, please do as following. 
 `mycroft-pip install --upgrade pip`
 
