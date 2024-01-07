@@ -94,7 +94,7 @@ After the fixes above, you should be able to use the CLI and getting audio outpu
 There are finely built Mycroft-Skills in Marketplace for Spofity and Pandora already, but as buyer prefered Hi-Res Audio, I don't wish to waste more money on stream service subscription cost, so I just tried hard to fetch music on YouTube by searching for URL. The basic concept is just taking the input text, and use it to serach YouTube link with Pytube, then download and convert it into .mp3 files.  
 
 > [!NOTE]
-> The source code is `process_input.py` in folder `python-ext`, and yes, it is still be editing so named it.  
+> The undone source code is `process_input.py` in folder `python-ext`, and yes, it is still be editing so named it. Make sure to change the `download_directory` at [Line 53] as well.  
 
 ## { Nextcloud Server }
 With much storage un-used, I hit upon this idea to use it as NextCloud Server to store 'secret files' and also work as where Mycroft downloads the audio to. 
