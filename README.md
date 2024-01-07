@@ -142,7 +142,21 @@ To have the easiest way, we can simply change the folder name `nextcloud` to `ht
 6. After installation for file storage is done, it will ask you if other functions is needed, let's just skip them.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/4c64c971-86bb-4ffa-8910-02481425b809)
 7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/df6b0aef-3087-4072-8a40-56c226c24007)
 
+## Web Buildup
+> [!NOTE]  
+> The source code is full pack named `apiweb` inside folder `python-ext`
+
+> [!NOTE]  
+> Mycroft CLI must be running to enable text input
+
+To easily control and enable text input from outside Mycroft CLI, I use ChatGPT to modify a simple FLASK Website. Do the following to get it hosted. 
+1. Run `python app.py` to host it on port 5000 defined in file.
+2. You could add it to Mycroft's `auto_run.sh`, or take [this doc](https://tecadmin.net/deploying-flask-application-on-ubuntu-apache-wsgi/) to learn how to host it on startup with Apache. 
+
 ## Device Buildup
+> [!NOTE]  
+> All involved in Mycroft Skill must have Mycroft CLI running first  
+
 It's finally time for us to build our device with electronic devices. Due to time and difficulity, I only got following done. 
 ### Time Display
 > [!NOTE]  
@@ -151,7 +165,7 @@ It's finally time for us to build our device with electronic devices. Due to tim
 I'm using the component based on TM1637, which have python package `tm1637` for easy way to display numbers. Let's move on.  
 1. Run `mycroft-pip install raspberrypi-tm1637` to get the package first.  
 2. For the circuit, connect `CLK` with `GPIO23`, and `DIO` with GPIO24. Find any ground pin for `GND` and 5V for the `VCC`.
-3. Run `python time_display.py` to manually test it, then you can add it into `auto_run.sh` with its path.
+3. Run `python time_display.py` to manually test it, then you can add it into Mycroft's `auto_run.sh` with its path.
 > [!TIP]
 > You can change brightness higher from 0 to 7, at [Line 13]
 
