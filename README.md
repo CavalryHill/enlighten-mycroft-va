@@ -3,7 +3,7 @@
 ## System Using at The Moment
  + Raspberry Pi 4
  + 32 GB SD-Card
- + Picroft (Stable) on Sep. 07, 2020
+ + Picroft (Stable Image) on Sep. 07, 2020
 
 
 ## { Flash Picroft Image }
