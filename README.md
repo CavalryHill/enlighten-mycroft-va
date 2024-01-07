@@ -142,6 +142,12 @@ To have the easiest way, we can simply change the folder name `nextcloud` to `ht
 6. After installation for file storage is done, it will ask you if other functions is needed, let's just skip them.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/4c64c971-86bb-4ffa-8910-02481425b809)
 7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/df6b0aef-3087-4072-8a40-56c226c24007)
 
+But you may experience the below situation when connected from outside even with the same private nextwork.  
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/3bf79c0c-a63f-4a94-957e-72358711854f)
+
+You need to edit config file at `/var/www/html/config/config.php`, edit the array for `trust_domains`  
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/e47a9165-778f-4100-9b12-7a58cd65b9db)
+
 ## Web Buildup
 > [!NOTE]  
 > The source code is full pack named `apiweb` inside folder `python-ext`
