@@ -196,7 +196,10 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 > My both tri-colour LED just got dead, so I modify sir Andreas Rother's code since gpiozero often crush on older python version.  
 
 > [!NOTE]
-> The source code is named `singal_led_2.py` inside folder `python-ext`, but if you're interested in using tri-colour LED, you may take a visit to my undone work of `sigal_led.py`.  
+> The source code is named `singal_led_2.py` inside folder `python-ext`, but if you're interested in using tri-colour LED, you may take a visit to my undone work of `sigal_led.py`.
+
+> [!IMPORTANT]
+> Mind this file is a Mycrfot Skill, you need to renamed in `__init__.py` in `/opt/mycroft/skills/{YOUR_FOLDER}` 
 
 # Reference
 > Mycroft  
