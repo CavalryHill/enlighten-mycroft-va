@@ -169,9 +169,11 @@ You need to edit config file at `/var/www/html/config/config.php`, edit the arra
 > [!NOTE]  
 > Mycroft CLI must be running to enable text input
 
-To easily control and enable text input from outside Mycroft CLI, I use ChatGPT to modify a simple FLASK Website. Do the following to get it hosted. 
+To easily control and enable text input from outside Mycroft CLI, I use ChatGPT to modify a simple FLASK Website, and there's no connected databse or text file to keep the history. You are please to modify then do the following to get it hosted. 
 1. Run `python app.py` to host it on port 5000 defined in file.
-2. You could add it to Mycroft's `auto_run.sh`, or take [this doc](https://tecadmin.net/deploying-flask-application-on-ubuntu-apache-wsgi/) to learn how to host it on startup with Apache. 
+2. You could add it to Mycroft's `auto_run.sh`, or take [this doc](https://tecadmin.net/deploying-flask-application-on-ubuntu-apache-wsgi/) to learn how to host it on startup with Apache.
+
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/e2ca1900-106c-471d-bdc4-5fbfce376e8a)
 
 ## { Device Buildup} 
 > [!NOTE]  
