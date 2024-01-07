@@ -190,6 +190,14 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 
 ![20240107_131353](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/44cbafcf-9ef4-4f4f-b04a-1d9ec4e5f071)
 
+### LED Display
+> [!IMPORTANT]
+> My both tri-colour led just got dead, so I use three led instead.  
+
+> [!NOTE]
+> The source code is named `singal_led.py` inside folder `python-ext`  
+
+Trying to show status by LED, I have made the code based on arother's work (in Reference). 
 
 # Reference
 > Mycroft  
