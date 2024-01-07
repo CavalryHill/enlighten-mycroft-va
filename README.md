@@ -192,12 +192,10 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 
 ### LED Display
 > [!IMPORTANT]
-> My both tri-colour led just got dead, so I use three led instead.  
+> My both tri-colour LED just got dead, so I change to use [other's work](https://github.com/arother/picroft-led) in Reference.  
 
 > [!NOTE]
-> The source code is named `singal_led.py` inside folder `python-ext`  
-
-Trying to show status by LED, I have made the code based on arother's work (in Reference). 
+> The source code is named `singal_led_2.py` inside folder `python-ext`, but if you're interested in using tri-colour LED, you may take a visit to my undone work of `sigal_led.py`.  
 
 # Reference
 > Mycroft  
