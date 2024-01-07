@@ -5,9 +5,9 @@
 
 
 ## Picroft 燒錄
-First, go get [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2023-09-07`.
+First, go get yourself [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2020-09-07`.
 
-then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosure-picroft) to install
+then follow up the [RPi Official Document](https://github.com/MycroftAI/enclosure-picroft) to flash it into Raspberry Pi. 
 
 > [!CAUTION]
 > Please making sure you're using Wi-Fi 2.4G for Picroft to create connection. I was using 5.0G and finally found out the problem during Mycroft-Setup-Wizard, so I'm not sure if setting up Wi-Fi insde Imager would work or not. But if you succeed to connect the device with SSH, congrats you save cost for a useless, expensive HDMI converter.  
@@ -36,7 +36,7 @@ Guessing the official forgot to defined version of python package, much of them 
 1. Register or Login your account at [Mycroft AI](https://home.mycroft.ai/). 
 2. On the left side-menu >> My Mycroft >> Devices. 
 3. Setup the default config for all device on the first time.
-4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in CLI >> History.
+4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in Mycroft CLI >> History.
 
 You should see something alike as below, and please make sure the `mycroft-version` is displayed to confirm the connection. 
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/a0b9e2ce-69af-42db-aeff-4432821f1e6e)
@@ -136,7 +136,7 @@ To have the easiest way, we can simply change the folder name `nextcloud` to `ht
 2. Use `sudo chown www-data:www-data html -R` in directory `/var/www` to give the Apache permission to read the folder, or there will be a blank webpage.  
 3. the new website should be host on <DEVICE_IP>:80.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d13c259b-9474-4ba0-aca1-b9eb98dfe72f)
 4. Follow the steps then install nextcloud.
-5. Get youself a nice drink and dessert and watch a movie, just don't close the long-awaiting installation.
+5. Get youself a nice drink and dessert to watch a movie, just don't close the long-awaiting installation.
 6. After installation for file storage is done, it will ask you if other functions is needed, let's just skip them.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/4c64c971-86bb-4ffa-8910-02481425b809)
 7. Hurrah, we've settled our own cloud storage in the Raspberry Pi now.  ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/df6b0aef-3087-4072-8a40-56c226c24007)
 
