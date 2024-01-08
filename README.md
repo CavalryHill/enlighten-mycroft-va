@@ -1,5 +1,8 @@
 # enlighten-voice-assistant
 
+## Why I try to achieve this
+I've always be curious about Voice Assistant since its debut, just due to the cost for research hinder me from make one for myself. Am happy to have the support of school course, and see a (once thought) fine model based on Python as well. Since I love to listen to music at leisure time, I just want to change into my bot for music playing and downloader. So, there we are.  
+
 ## System Using at The Moment
  + Raspberry Pi 4
  + 32 GB SD-Card
@@ -7,7 +10,8 @@
  + Picroft (Stable Image) on Sep. 07, 2020
 
 ## Basic Design
-![20240108_160923](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/249de1ff-d7cc-4a95-8143-b20a03d03067)
+![20240108_160923](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/249de1ff-d7cc-4a95-8143-b20a03d03067)  
+So I need Mycroft as core of V.A., adding Nextcloud to use spare disk space. We also need some other source to know if the V.A. is working or not, so adding some more component for more possibilities.  
 
 ## { Flash Picroft Image }
 First, go get yourself [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2020-09-07`.
