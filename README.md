@@ -169,7 +169,8 @@ After this done, you may test out the code, waiting for downloads, and you shoul
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/79ccadf2-92e4-4f11-be98-225dd8aaa5c9)
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d379458c-3de8-4f6d-87aa-becf35cedc93)
 
-But there's a problem is that using webpack to self-build doesn't have function to auto-sync, it means we needs to restart to find it in Nextcloud GUI page.  
+> [!IMPORTANT]
+> There's a problem is that using webpack to self-build doesn't have function to auto-sync files in folder, so it's not yet able to see downloads inside GUI.  
 
 ## { Web Buildup }
 > [!NOTE]  
