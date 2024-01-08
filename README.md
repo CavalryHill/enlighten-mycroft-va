@@ -82,7 +82,7 @@ I just found SSL got `Verfied Failed` after like a month. So here's the instruct
 1. Run `mycroft-pip install --upgrade certifi` to get the latest version of package for SSL certificate.  
 2. Run `sudo apt-get install ca-certificates` to get a new certificate.
 
-There you go, so simple and not even to walkthrough registration procedure like Let's Encrypt. 
+There you go, so simple and not even to walkthrough registration procedure like `Let's Encrypt`, enough for personal usage. 
 
 ## { Client Bus }
 Although simply using the Mycroft provide much function, we want to catch or set the I/O to make more expansion. 
