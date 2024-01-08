@@ -43,7 +43,7 @@ Guessing the official forgot to defined version of python package, much of them 
 3. Setup the default config for all device on the first time.
 4. Press 'Add Device' and connect your Picroft with the 6-digit-code provided in Mycroft CLI >> History.
 
-You should see something alike as below, and please make sure the `mycroft-version` is displayed to confirm the connection. 
+You should see something alike as below, and please make sure the `mycroft-version` is displayed to confirm the connection.  
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/a0b9e2ce-69af-42db-aeff-4432821f1e6e)
 
 ### Changing Text-to-Speech Engine
