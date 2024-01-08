@@ -6,6 +6,8 @@
  + Python 3.7.3
  + Picroft (Stable Image) on Sep. 07, 2020
 
+## Basic Design
+![20240108_160923](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/249de1ff-d7cc-4a95-8143-b20a03d03067)
 
 ## { Flash Picroft Image }
 First, go get yourself [Picroft](https://github.com/MycroftAI/enclosure-picroft), please make sure you download the `stable image` on `2020-09-07`.
