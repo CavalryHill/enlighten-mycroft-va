@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MycroftAI Settings</title>
+
+    <!-- Flask SocketIO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        #chat-room {
+            flex: 9;
+            overflow-y: scroll;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 90vh;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .user-message img,
+        .mycroft-message img {
+            border-radius: 50%;
+            margin-right: 1vw;
+            width: 4vh;
+            height: 4vh;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 5px;
+            max-width: 60%;
+            /* Limit the width of the message box */
+        }
+
+        .mycroft-message {
+            align-self: flex-start;
+            background-color: #f2f2f2;
+            color: #333;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 5px;
+            max-width: 60%;
+            /* Limit the width of the message box */
+        }
+
+        #user-input {
+            flex-grow: 1;
+            width: calc(100% - 60px);
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #send-button {
+            width: 8vw;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #mycroft-status {
+            display: flex;
+            gap: 1vw;
+            height: 10vh;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #f2f2f2;
+            color: #333;
+            font-size: 20px;
+        }
+    </style>
+
+    <!-- Date and Time -->
+    <style>
+        .date-and-time {
+            color: #ffd868;
+        }
+
+        .display-date {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .display-time {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 5rem;
+            font-weight: bold;
+            border: 2px solid #ffd868;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: ease-in-out 0.1s;
+            transition-property: background, box-shadow, color;
+            -webkit-box-reflect: below 2px linear-gradient(transparent, rgba(255, 255, 255, 0.05));
+        }
+
+        .display-time:hover {
+            background: #ffd868;
+            box-shadow: 0 0 30px#ffd868;
+            color: #272727;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Full Page -->
+    <div style="display: flex; flex-direction: row; width: 100vw; height: 100vh;">
+        <!-- Chat Room -->
+        <div style="display: flex; flex-direction: column; width: 60vw; height: 100vh;">
+            <div id="chat-room"></div>
+            <div style="display: flex; flex-direction: row;">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+        <!-- Settings -->
+        <div
+            style="display: flex; flex-direction: column; width: 40vw; height: 100vh; background-color: #2C333A; justify-content: space-between; align-items: center;">
+
+            <div id="mycroft-status">
+                <img style="width: 1vw; height: 1vw; border-radius: 50%; background-color: #4169E1;">
+                Mycroft is listening...
+            </div>
+
+            <!-- Nextcloud -->
+            <img src="./static/icon/Nextcloud.png" style="width: 16vw; height: 16vw; cursor: pointer"
+                onclick="openNextcloud(); " />
+
+            <div class="date-and-time">
+                <div class="display-date">
+                    <span id="day">day</span>,
+                    <span id="daynum">00</span>
+                    <span id="month">month</span>
+                    <span id="year">0000</span>
+                </div>
+                <div class="display-time"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mycroft Control -->
+    <script>
+        const socket = io.connect('http://127.0.0.1:5000');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatRoom = document.getElementById("chat-room");
+            const userInput = document.getElementById("user-input");
+            const sendButton = document.getElementById("send-button");
+            const mycroftStatus = document.getElementById("mycroft-status");
+
+            // Function to append messages to the chat room
+            function appendMessage(sender, message) {
+                const messageElement = document.createElement("div");
+                messageElement.innerHTML = message;
+                messageElement.classList.add(sender === "You" ? "user-message" : "mycroft-message");
+                chatRoom.insertAdjacentHTML('afterbegin', messageElement.outerHTML);
+                // chatRoom.appendChild(messageElement);
+                chatRoom.scrollTop = chatRoom.scrollHeight;
+            }
+
+            // Function to handle user input
+            async function handleUserInput() {
+                const userMessage = userInput.value;
+                if (userMessage.trim() !== "") {
+                    // ! - Now Only Created on Socket over Mycroft
+                    // appendMessage("You", userMessage);
+
+                    // Send user input to the server
+                    await fetch('/api/input', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ input: userMessage }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data); // Optional: Log the response from the server
+                        })
+                        .catch(error => console.error('Error:', error));
+
+                    // await fetchMycroftOutput();
+
+                    userInput.value = "";
+                }
+            }
+
+            userInput.addEventListener("keydown", async function (event) {
+                if (event.key === "Enter") {
+                    await handleUserInput();
+                }
+            });
+
+            sendButton.addEventListener("click", async function () {
+                await handleUserInput();
+            });
+
+            // Function to update Mycroft's listening status
+            function updateMycroftStatus(listening) {
+                mycroftStatus.textContent = listening ? "Mycroft is listening..." : "Mycroft is not listening.";
+            }
+
+            // Example: Update Mycroft's status every 5 seconds (for demonstration purposes)
+            setInterval(function () {
+                const isListening = Math.random() < 0.5; // Simulate Mycroft's listening status
+                updateMycroftStatus(isListening);
+            }, 5000);
+
+            /// Get Output by Mycroft
+            socket.on('mycroft_response', function (data) {
+                const mycroftResponse = data.utterance || '';
+                if (mycroftResponse.trim() !== "") {
+                    appendMessage("Mycroft", mycroftResponse);
+                }
+            });
+
+            // Get Input from User
+            socket.on('user_input', function (data) {
+                const userInput = data.utterance || '';
+                if (userInput.trim() !== "") {
+                    appendMessage("You", userInput);
+                }
+            });
+
+
+
+            // async function fetchMycroftOutput() {
+            //     await fetch('/api/output')
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             const mycroftResponses = data.utterances || [];
+
+            //             mycroftResponses.forEach(mycroftResponse => {
+            //                 if (mycroftResponse.trim() !== "") {
+            //                     appendMessage("Mycroft", mycroftResponse);
+            //                 }
+            //             });
+            //         })
+            //         .catch(error => console.error('Error:', error))
+            //     // .finally(() => {
+            //     //     // Fetch Mycroft output again after a short delay
+            //     //     setTimeout(fetchMycroftOutput, 10000); // Adjust the delay as needed
+            //     // });
+            // }
+
+        });
+
+
+    </script>
+
+    <!-- Nextcloud -->
+    <script>
+        function openNextcloud() {
+            window.open('http://localhost:80/index.php/apps/files/', '_blank');
+        }
+    </script>
+
+    <!-- Date and Time -->
+    <script>
+        const displayTime = document.querySelector(".display-time");
+        // Time
+        function showTime() {
+            let time = new Date();
+            displayTime.innerText = time.toLocaleTimeString("en-US", { hour12: false });
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
+
+        // Date
+        function updateDate() {
+            let today = new Date();
+
+            // return number
+            let dayName = today.getDay(),
+                dayNum = today.getDate(),
+                month = today.getMonth(),
+                year = today.getFullYear();
+
+            const months = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+            ];
+            const dayWeek = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+            ];
+            // value -> ID of the html element
+            const IDCollection = ["day", "daynum", "month", "year"];
+            // return value array with number as a index
+            const val = [dayWeek[dayName], dayNum, months[month], year];
+            for (let i = 0; i < IDCollection.length; i++) {
+                document.getElementById(IDCollection[i]).firstChild.nodeValue = val[i];
+            }
+        }
+
+        updateDate();
+    </script>
+</body>
+
+</html>
