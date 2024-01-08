@@ -162,6 +162,15 @@ But you may experience the below situation when connected from outside even with
 You need to edit config file at `/var/www/html/config/config.php`, edit the array with the `Nextcloud Server IPv4` for `trust_domains`. Then restart Apache server.    
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/e47a9165-778f-4100-9b12-7a58cd65b9db)
 
+### Store Pytube Music
+As I mentioned, I wish it to be also where the Mycroft save downlaoded music at. To save file to system root `/var/www` requires super user permission, but using `sudo` only will be outside python-venv causing lots of error. So we need to use following code: `sudo -E /home/pi/mycroft-core/.venv/bin/python /home/pi/{FILE_PATH}` to run inside the python-venv of Mycroft.  
+
+After this done, you may test out the code, waiting for downloads, and you should find it in sotrage of Nextcloud.  
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/79ccadf2-92e4-4f11-be98-225dd8aaa5c9)
+![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/d379458c-3de8-4f6d-87aa-becf35cedc93)
+
+But there's a problem is that using webpack to self-build doesn't have function to auto-sync, it means we needs to restart to find it in Nextcloud GUI page.  
+
 ## { Web Buildup }
 > [!NOTE]  
 > The source code is full pack named `apiweb` inside folder `python-ext`
