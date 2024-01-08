@@ -213,6 +213,9 @@ I'm using the component based on TM1637, which have python package `tm1637` for 
 > [!IMPORTANT]
 > Mind this file is a Mycrfot Skill, you need to renamed in `__init__.py` in `/opt/mycroft/skills/{YOUR_FOLDER}` 
 
+# DEMO
+You may pay a visit to [the link](https://youtu.be/9Hhj5ppT0Ck) for my simple demo, but I've to use Chinese for the class, am apologize for that. But I guess you can still feel how to control them this way. 
+
 # Reference
 > Mycroft  
 >  - [Mycroft Offical Doc](https://mycroft-ai.gitbook.io/docs/)
