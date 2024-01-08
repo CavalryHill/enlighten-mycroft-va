@@ -47,7 +47,7 @@ You should see something alike as below, and please make sure the `mycroft-versi
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/a0b9e2ce-69af-42db-aeff-4432821f1e6e)
 
 ### Changing Text-to-Speech Engine
-If you can hear the audio output while mic testing, but no sound while running response in CLI, likewise, it's probally the default package of `mycroft-mimic3-tts` is also outdated and causing no sound output. I've met the error but enable to fix the python package conflict. So, I simply change the TTS module to Google. 
+If you can hear the audio output while mic testing, but no sound while running response in CLI, likewise, it's probally the default package of `mycroft-mimic3-tts` is also outdated and causing no sound output. I've met the error but unable to fix the python package conflict. So, I simply change the TTS module to Google. 
 Simply run `mycroft-config set tts.module "google"`, then the user config will change automatically. 
 
 If you wish to change the language output, may please hit `mycroft-config edit user`, you should see the file as below. 
