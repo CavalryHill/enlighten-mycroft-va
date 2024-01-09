@@ -166,7 +166,7 @@ But you may experience the below situation when connected from outside even with
 ![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/3bf79c0c-a63f-4a94-957e-72358711854f)
 
 You need to edit config file at `/var/www/html/config/config.php`, edit the array with the `Nextcloud Server IPv4` for `trust_domains`. Then restart Apache server.    
-![image](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/e47a9165-778f-4100-9b12-7a58cd65b9db)
+![Screenshot 2024-01-07 144340](https://github.com/CavalryHill/enlighten-mycroft-va/assets/92420621/8612a76a-c32b-46d8-9bfa-1a15f056e611)
 
 ### Store Pytube Music
 As I mentioned, I wish it to be also where the Mycroft save downlaoded music at. To save file to system root `/var/www` requires super user permission, but using `sudo` only will be outside python-venv causing lots of error. So we need to use following code: `sudo -E /home/pi/mycroft-core/.venv/bin/python /home/pi/{FILE_PATH}` to run inside the python-venv of Mycroft.  
